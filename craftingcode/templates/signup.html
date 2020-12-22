@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="static/css/signupstyle.css">
+</head>
+<body>
+	<div class="center">
+		<h1>Sign Up</h1>
+		<div class="alert">
+			{% for x in messages %}
+		   <p> {{x}} </p>
+		   {% endfor %}</div>
+		<form action ="signup" method="post"  autocomplete="off">
+			{% csrf_token %}
+			<div class="txt_field">
+				<input type="text" required name="username">
+				<span></span>
+				<label>Username</label>
+			</div>
+			<div class="txt_field">
+				<input type="email" required name="email">
+				<span></span>
+				<label>email</label>
+			</div>
+			<div class="txt_field">
+				<input type="password" required name="password1">
+				<span></span>
+				<label>password</label>
+			</div>
+			<div class="txt_field">
+				<input type="password" required name="password2">
+				<span></span>
+				<label>confirm password</label>
+			</div>
+			<input type="submit" value="Sign Up">
+			<div class="signup_link">
+				already a member!<a href="/login">Login</a>
+			</div>
+			<div class="back">
+				<a href="/">back to home</a>
+			</div>
+
+			
+		</form>
+	</div>
+
+</body>
+</html>

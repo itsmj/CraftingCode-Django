@@ -1,0 +1,144 @@
+{% load static %}
+{% static "images"  as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CraftingCode.in</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="static/css/coursesstyle.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <header>
+      	<nav class="navbar" id="navbarr">
+			  <div class="logo">
+				<a href="/"><img src="static/images/craftingcode.png"></a>
+			  </div>
+
+		      <ul class="nav-list">
+		      <div id='cancel-bars'>
+		    	<i class="fas fa-times" id="cancel"></i>
+		      </div>
+				<li><a href="/">HOME</a></li>
+				<li id="crafting_courses"><a href="/courses">COURSES</a></li>
+				{% if user.is_authenticated %}
+				<li>Hello,{{user.username}}</li>
+				<li><a href="/logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login">Log In</a></li>
+				<li><a href="/signup">Sign Up</a></li>
+				{% endif %}
+	         </ul>
+			   <div id='bars'>
+				<i class="fas fa-bars" id="btn"></i>
+				</div>
+		</nav>
+		   </header>
+
+<div class="allcourses">
+			<div class="courses">
+				<h1>Our Courses</h1>
+			</div>
+	<div class="container">
+
+		{% for i in cc %}
+	    <div class="card" style="width:200px">
+		<img class="card-img-top" src="{{i.courseimage.url}}" alt="Card image" style="width:100%">
+		<div class="card-body">
+		<h4 class="card-title">{{i.coursename}}</h4>
+		<p>{{i.coursedesc}}</p>
+		<p>Rs.{{i.courseprice}}</p>
+		
+		</div>
+		</div>
+		{% endfor %}
+
+	</div>
+</div>
+<footer>
+	<div class="foter">
+	   <p>Copyright © 2020 All rights reserved | craftingcode.in</p>
+	 </div>
+	  </footer>
+	  
+  
+  
+  
+  <script> 
+  
+  
+  
+  const navlist = document.querySelector(".nav-list");
+  const boddy = document.querySelector("body");
+  const headerr = document.querySelector("header");
+  const menubar = document.getElementById("bars");
+  const cancelbar = document.getElementById("cancel-bars");
+  
+  
+  
+  
+  menubar.onclick = ()=>{ 
+	  
+	  navlist.classList.add("active");
+	  menubar.classList.add("hide");
+	   boddy.classList.add("disabledscroll");
+	   headerr.classList.add("active");
+	   }
+  
+  cancelbar.onclick = ()=>{ 
+	  navlist.classList.remove("active");
+	  menubar.classList.remove("hide");
+	  boddy.classList.remove("disabledscroll");
+	  headerr.classList.remove("active");
+	   }
+  
+  
+  
+  window.onscroll = function() {myFunction()};
+  
+			  var navbar = document.getElementById("navbarr");
+			  var navtext1 = document.getElementById("text1");
+			  var navtext2 = document.getElementById("text2");
+			  var navtext3 = document.getElementById("text3");
+			  var navtext4 = document.getElementById("text4");
+			  
+			  
+			  var sticky = 0;
+			  function myFunction()
+					  {
+					   var scrollTop = window.pageYOffset;
+					   
+					   if(scrollTop > 36)
+  
+						   {
+									 
+									   if(scrollTop > sticky)
+									   {navbar.style.top = "-100px";}
+  
+									   else{navbar.style.top = "0px";
+										   navbar.classList.add("bg-scroll")   }
+									  sticky = scrollTop;
+  
+							}
+					   else
+						   {
+							   navbar.classList.remove("bg-scroll")
+						   }
+					  }  
+  </script>   
+  
+  </body>
+  </html>     
+
+
+
+
+			                     
+
+
+			              
